@@ -1,0 +1,22 @@
+{
+  "tags": [
+    "yast_firewall-logging-level"
+  ],
+  "properties": [],
+  "area": [
+    {
+      "xpos": 14,
+      "ypos": 37,
+      "width": 173,
+      "height": 131,
+      "type": "match"
+    },
+    {
+      "xpos": 312,
+      "ypos": 46,
+      "width": 258,
+      "height": 96,
+      "type": "match"
+    }
+  ]
+}

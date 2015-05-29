@@ -1,0 +1,22 @@
+{
+  "properties": [],
+  "tags": [
+    "yast_firewall-broadcast"
+  ],
+  "area": [
+    {
+      "xpos": 16,
+      "ypos": 36,
+      "width": 186,
+      "height": 137,
+      "type": "match"
+    },
+    {
+      "xpos": 309,
+      "ypos": 190,
+      "width": 696,
+      "height": 143,
+      "type": "match"
+    }
+  ]
+}
