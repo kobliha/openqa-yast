@@ -24,18 +24,19 @@ sub run() {
 
     # Start Yast firewall
     type_string "/usr/lib/YaST2/bin/y2base firewall ncurses\n";
-    wait_still_screen(2);
+    # Wait for Firewall UI to show a start-up dialog
+    check_screen($fw_menutree_needles[0], 60);
     assert_screen($fw_menutree_needles[0], 1);
 
     # Going through all tree-menu items from top to bottom
     foreach my $i (1..6) {
-        send_key("down");
+        send_key("down", 0);
         send_key("ret", 1);
         assert_screen($fw_menutree_needles[$i], 2);
     }
 
     # Configuration Summary
-    send_key("alt-n", 1);
+    send_key("alt-n", 0);
     assert_screen("yast_firewall-summary", 5);
 
     # Finish/Write configuration

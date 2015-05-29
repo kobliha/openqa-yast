@@ -30,10 +30,10 @@ sub select_filter($) {
 
     # Open filter menu and go to the top (current state is considered as unknown)
     send_key("alt-f", 1);
-    send_key("up") for (1 .. @filter_entries-1);
+    send_key("up", 0) for (1 .. @filter_entries-1);
 
     # Select the filter from menu
-    send_key("down") for (1 .. $filter_position);
+    send_key("down", 0) for (1 .. $filter_position);
 
     # Validate if the requested filter entry is selected
     if (defined $filter_needles{$filter} && $filter_needles{$filter} ne "") {
@@ -85,7 +85,9 @@ sub run() {
 
     # Start Yast Software Manager
     type_string "/usr/lib/YaST2/bin/y2base sw_single ncurses\n";
-    wait_still_screen(10);
+    # Wait for sw_single to start
+    check_screen("yast_sw_single-started", 300);
+
     assert_screen("yast_sw_single-started", 2);
 
     # Test searching functionality
