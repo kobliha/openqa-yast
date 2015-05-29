@@ -1,0 +1,15 @@
+{
+  "area": [
+    {
+      "xpos": 1,
+      "ypos": 126,
+      "width": 104,
+      "height": 20,
+      "type": "match"
+    }
+  ],
+  "properties": [],
+  "tags": [
+    "yast_sw_single-filter-rpm-groups"
+  ]
+}

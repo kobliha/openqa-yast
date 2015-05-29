@@ -1,0 +1,15 @@
+{
+  "tags": [
+    "yast_sw_single-filter-installation-summary"
+  ],
+  "properties": [],
+  "area": [
+    {
+      "xpos": 1,
+      "ypos": 174,
+      "width": 172,
+      "height": 19,
+      "type": "match"
+    }
+  ]
+}

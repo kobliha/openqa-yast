@@ -1,0 +1,15 @@
+{
+  "tags": [
+    "yast_sw_single-filter-repositories"
+  ],
+  "properties": [],
+  "area": [
+    {
+      "xpos": 0,
+      "ypos": 142,
+      "width": 149,
+      "height": 20,
+      "type": "match"
+    }
+  ]
+}

@@ -95,5 +95,8 @@ loadtest "yast/console.pm";
 # Run Yast Firewall test
 loadtest "yast/yast_firewall.pm";
 
+# Run Yast Package Manager test
+loadtest "yast/yast_sw_single.pm";
+
 1;
 # vim: set sw=4 et:

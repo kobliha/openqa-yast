@@ -1,0 +1,15 @@
+{
+  "tags": [
+    "yast_sw_single-search-for-yast2-core"
+  ],
+  "properties": [],
+  "area": [
+    {
+      "xpos": 392,
+      "ypos": 58,
+      "width": 144,
+      "height": 39,
+      "type": "match"
+    }
+  ]
+}

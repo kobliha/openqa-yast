@@ -1,0 +1,15 @@
+{
+  "tags": [
+    "yast_sw_single-filter-languages"
+  ],
+  "properties": [],
+  "area": [
+    {
+      "xpos": 4,
+      "ypos": 109,
+      "width": 93,
+      "height": 22,
+      "type": "match"
+    }
+  ]
+}
