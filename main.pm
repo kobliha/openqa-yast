@@ -89,5 +89,8 @@ loadtest "setup/boot.pm";
 # System boots to minimal X (DESKTOP=minimalx)
 loadtest "setup/first_boot.pm";
 
+# Switch to console and login as user
+loadtest "yast/console.pm";
+
 1;
 # vim: set sw=4 et:
