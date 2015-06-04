@@ -61,9 +61,12 @@ ones from git instead of fixing them manually when something changes.
 
 The most common way is to create a new job using a pre-built hard-disk image
 with HDD_1=hard-disk-image.qcow placed in /var/lib/openqa/factory/other
+and also ISO=installation-image.iso placed in /var/lib/openqa/factory/iso
+if you want to test some installation media features.
 
 Example, run this on your openQA server
 
     /usr/share/openqa/script/client jobs post ARCH=x86_64 BACKEND=qemu BUILD=123 \
         DISTRI=openqa-yast TEST=openqa-yast VERSION=Tumbleweed \
-        HDD_1=openSUSE-13.2-minimalx.qcow
+        HDD_1=openSUSE-13.2-minimalx.qcow \
+        ISO=Tumbleweed.iso
