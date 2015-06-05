@@ -12,20 +12,23 @@ if [ -L needles ]; then
 fi
 ln -s ../opensuse/needles needles
 
-# Link all "our_needles" one by one to `opensuse` needles
+# Link all "our_*/*" one by one to `opensuse` needles
 # That are linked to our distri
-cd our_needles
-CURRENT_DIR=`pwd`
+for DIR in `ls | grep 'our_.*' | sed 's/our_//'`; do
+    cd our_${DIR}
+    CURRENT_DIR=`pwd`
+    echo "Creating links to "${CURRENT_DIR}
 
-for NEEDLE in `ls`; do
-  LINK="../needles/"${NEEDLE}
+    for TARGET in `ls`; do
+      LINK="../"${DIR}"/"${TARGET}
 
-  if [ -f "${LINK=}" ]; then
-    echo "Link ${LINK} already exists"
-  else
-    echo "Linking ${NEEDLE}"
-    ln -s ${CURRENT_DIR}"/"${NEEDLE} ${LINK}
-  fi
+      if [ -f "${LINK=}" ]; then
+        echo "Link ${LINK} already exists"
+      else
+        echo "Linking ${TARGET}"
+        ln -s ${CURRENT_DIR}"/"${TARGET} ${LINK}
+      fi
+    done
+
+    cd -
 done
-
-cd -
