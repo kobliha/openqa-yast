@@ -96,13 +96,13 @@ loadtest "setup/boot.pm";
 loadtest "setup/first_boot.pm";
 
 # Switch to console and login as user
-#loadtest "yast/console.pm";
+loadtest "yast/console.pm";
 
 # Run Yast Firewall test
-#loadtest "yast/yast_firewall.pm";
+loadtest "yast/yast_firewall.pm";
 
 # Run Yast Package Manager test
-#loadtest "yast/yast_sw_single.pm";
+loadtest "yast/yast_sw_single.pm";
 
 1;
 # vim: set sw=4 et:
