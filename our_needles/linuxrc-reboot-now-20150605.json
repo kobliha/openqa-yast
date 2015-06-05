@@ -1,0 +1,22 @@
+{
+  "area": [
+    {
+      "xpos": 402,
+      "ypos": 337,
+      "width": 202,
+      "height": 45,
+      "type": "match"
+    },
+    {
+      "xpos": 396,
+      "ypos": 412,
+      "width": 72,
+      "height": 24,
+      "type": "match"
+    }
+  ],
+  "tags": [
+    "linuxrc-reboot-now"
+  ],
+  "properties": []
+}

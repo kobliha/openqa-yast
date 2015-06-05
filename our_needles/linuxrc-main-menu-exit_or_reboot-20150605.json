@@ -1,0 +1,22 @@
+{
+  "tags": [
+    "linuxrc-main-menu-exit-or-reboot"
+  ],
+  "properties": [],
+  "area": [
+    {
+      "xpos": 446,
+      "ypos": 291,
+      "width": 121,
+      "height": 41,
+      "type": "match"
+    },
+    {
+      "xpos": 438,
+      "ypos": 412,
+      "width": 130,
+      "height": 24,
+      "type": "match"
+    }
+  ]
+}
