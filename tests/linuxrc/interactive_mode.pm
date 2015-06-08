@@ -9,7 +9,8 @@ sub run() {
 
     $self->linuxrc::wait_for_bootmenu();
 
-    $self->linuxrc::boot_with_options("AddSwap=-1");
+    # Try some Linuxrc parameter that requires manual interaction
+    $self->linuxrc::boot_with_parameters("AddSwap=-1");
     assert_screen("linuxrc-manual-swap", 60);
     $self->linuxrc::reboot;
 }

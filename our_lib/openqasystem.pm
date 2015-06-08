@@ -2,6 +2,13 @@ package openqasystem;
 use base "opensusebasetest";
 use testapi;
 
+# Runs a given shell command in (optionally) given console
+#
+# @example:
+#   run_in_console("ls -lh /tmp", 2);
+#
+# @param shell command
+# @param (optional) console number, default: 2
 sub run_in_console {
     my $command = shift;
     my $console = shift || 2;

@@ -4,12 +4,17 @@ use testapi;
 use linuxrc;
 use openqasystem;
 
+#
+# bsc#906990 [linuxrc] add "Boot Linux" to installation media
+# Added in linuxrc-5.0.44
+#
+
 sub run() {
     my $self = shift;
 
     $self->linuxrc::wait_for_bootmenu();
 
-    $self->linuxrc::boot_with_options("SystemBoot=1");
+    $self->linuxrc::boot_with_parameters("SystemBoot=1");
     assert_screen("linuxrc-system_boot-select-a-system-to-boot", 60);
 
     # Press [Enter] till the last dialog for booting appears
@@ -19,6 +24,7 @@ sub run() {
     bmwqemu::diag "Booting the installed system now...";
     send_key "ret", 0;
 
+    # Wait for the system to boot
     assert_screen("displaymanager", 60);
     openqasystem::run_in_console("shutdown -r now", 2);
 }

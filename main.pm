@@ -25,12 +25,13 @@ sub setup_user_auth {
     # Live media
     elsif (get_var("LIVETEST")) {
         if (get_var("LIVECD") || get_var("PROMO")) {
-          $testapi::username = "linux";    # LiveCD account
+          # LiveCD account
+          $testapi::username = "linux";
           $testapi::password = "";
         }
         else {
             $testapi::username = "root";
-            $testapi::password = '';
+            $testapi::password = "";
         }
     }
     # Default fallback
@@ -40,20 +41,6 @@ sub setup_user_auth {
     }
 }
 
-sub setup_test_env() {
-    # FIXME: this is needed for ...
-    my $distri = testapi::get_var("CASEDIR").'/lib/susedistribution.pm';
-    require $distri;
-    testapi::set_distribution(susedistribution->new());
-
-    if (check_var("DESKTOP", "minimalx")) {
-        set_var("NOAUTOLOGIN", 1);
-        set_var("XDMUSED", 1);
-        set_var("DM_NEEDS_USERNAME", 1);
-    }
-}
-
-# FIXME: put this into shared library
 sub logcurrentenv(@) {
     foreach my $k (@_) {
         my $e = get_var("$k");
@@ -62,7 +49,25 @@ sub logcurrentenv(@) {
     }
 }
 
-# FIXME: put this into shared library
+sub setup_test_env() {
+    # Requires distri-specific functionality
+    my $distri = testapi::get_var("CASEDIR")."/lib/susedistribution.pm";
+    require $distri;
+
+    testapi::set_distribution(susedistribution->new());
+
+    if (check_var("DESKTOP", "minimalx")) {
+        set_var("NOAUTOLOGIN", 1);
+        set_var("XDMUSED", 1);
+        set_var("DM_NEEDS_USERNAME", 1);
+    }
+
+    logcurrentenv(qw"ADDONURL BIGTEST BTRFS CASEDIR DESKTOP HW HWSLOT LIVETEST
+                     LVM USBBOOT TEXTMODE DISTRI QEMUCPU QEMUCPUS RAIDLEVEL
+                     ENCRYPT INSTLANG QEMUVGA UEFI DVD GNOME KDE ISO LIVECD
+                     NETBOOT NICEVIDEO PROMO QEMUVGA SPLITUSR VIDEOMODE");
+}
+
 sub loadtest($) {
     my ($test) = @_;
     die "Unsupported test filename '$test', contains dash" if $test =~ /\-/;
@@ -78,22 +83,32 @@ setup_test_env();
 
 setup_user_auth();
 
-logcurrentenv(qw"ADDONURL BIGTEST BTRFS CASEDIR DESKTOP HW HWSLOT LIVETEST LVM USBBOOT TEXTMODE DISTRI QEMUCPU QEMUCPUS RAIDLEVEL ENCRYPT INSTLANG QEMUVGA  UEFI DVD GNOME KDE ISO LIVECD NETBOOT NICEVIDEO PROMO QEMUVGA SPLITUSR VIDEOMODE");
-
-# FIXME: why is this needed?
 bmwqemu::save_vars();
+
+#
+# Test the install media / Linxurc
+#
 
 if (defined get_var("ISO")) {
     bmwqemu::diag("Testing ISO-based features");
+
     loadtest "linuxrc/system_boot.pm";
     loadtest "linuxrc/interactive_mode.pm";
 }
+
+#
+# Boot into the installed system
+#
 
 # Bootloader test
 loadtest "setup/boot.pm";
 
 # System boots to minimal X (DESKTOP=minimalx)
 loadtest "setup/first_boot.pm";
+
+#
+# These test are called on running system
+#
 
 # Switch to console and login as user
 loadtest "yast/console.pm";
