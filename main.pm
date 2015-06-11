@@ -92,7 +92,13 @@ bmwqemu::save_vars();
 if (defined get_var("ISO")) {
     bmwqemu::diag("Testing ISO-based features");
 
+    # Tests booting installed system using Linuxrc
     loadtest "linuxrc/system_boot.pm";
+
+    # Reboot between tests
+    loadtest "setup/reboot.pm";
+
+    # Part of this test is also rebooting
     loadtest "linuxrc/interactive_mode.pm";
 }
 

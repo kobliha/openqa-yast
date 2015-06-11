@@ -9,7 +9,9 @@ use testapi;
 
 sub run() {
     # Switch to console 4
+    bmwqemu::diag "Switching to console 4 to perform text-based tests";
     send_key "ctrl-alt-f4";
+    send_key "alt-f4";
     assert_screen "tty4-selected", 10;
 
     # login as user

@@ -3,7 +3,9 @@ use base "y2logsstep";
 use testapi;
 
 sub run() {
-    assert_screen("displaymanager", 60);
+    bmwqemu::diag "Booting into system, looking for login screen...";
+    # Try to match on of the following screens: X-login, console login
+    assert_screen([qw/displaymanager displaymanager-minimalx sddm tty1-selected/], 60);
 }
 
 sub test_flags() {

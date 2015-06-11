@@ -26,7 +26,6 @@ sub run() {
 
     # Wait for the system to boot
     assert_screen("displaymanager", 60);
-    openqasystem::run_in_console("shutdown -r now", 2);
 }
 
 sub test_flags() {
